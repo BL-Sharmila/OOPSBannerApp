@@ -1,40 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * UC7: Store Character Pattern in a Class
+ * UC8: Use Map for Character Patterns and Render via Function
  */
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
+        Map<Character, String[]> patternMap = buildPatternMap();
+        displayBanner("OOPS", patternMap);
+    }
 
-        CharacterPattern O = new CharacterPattern('O', getO());
-        CharacterPattern P = new CharacterPattern('P', getP());
-        CharacterPattern S = new CharacterPattern('S', getS());
+    static Map<Character, String[]> buildPatternMap() {
 
-        CharacterPattern[] word = {O, O, P, S};
+        Map<Character, String[]> map = new HashMap<>();
+
+        map.put('O', new String[]{" ***** "," *   * "," *   * "," *   * "," *   * "," *   * "," ***** "});
+        map.put('P', new String[]{" ****  "," *   * "," *   * "," ****  "," *     "," *     "," *     "});
+        map.put('S', new String[]{" ***** "," *     "," *     "," ****  ","     * ","     * "," ***** "});
+
+        return map;
+    }
+
+    static void displayBanner(String word, Map<Character, String[]> map) {
 
         for (int i = 0; i < 7; i++) {
             StringBuilder line = new StringBuilder();
-            for (CharacterPattern cp : word) {
-                line.append(cp.getPattern()[i]).append(" ");
+            for (char ch : word.toCharArray()) {
+                line.append(map.get(ch)[i]).append(" ");
             }
             System.out.println(line);
         }
     }
-
-    static class CharacterPattern {
-        private final char character;
-        private final String[] pattern;
-
-        public CharacterPattern(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
-
-        public String[] getPattern() {
-            return pattern;
-        }
-    }
-
-    static String[] getO() { return new String[]{" ***** "," *   * "," *   * "," *   * "," *   * "," *   * "," ***** "}; }
-    static String[] getP() { return new String[]{" ****  "," *   * "," *   * "," ****  "," *     "," *     "," *     "}; }
-    static String[] getS() { return new String[]{" ***** "," *     "," *     "," ****  ","     * ","     * "," ***** "}; }
 }
