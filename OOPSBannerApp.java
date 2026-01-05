@@ -1,9 +1,4 @@
 public class OOPSBannerApp {
-    /**
-     * Main method - Entry point of the application
-     * 
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
         // Declare and initialize array inline with String.join() calls
         String[] bannerLines = {
